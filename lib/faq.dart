@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'library.dart' as lib;
-// import 'package:url_launcher/url_launcher.dart';
 
 class FAQ extends StatelessWidget {
   @override

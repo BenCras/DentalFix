@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
 import 'dentist.dart';
-import 'appointment.dart';
+import 'appointmentPage.dart';
 import 'faq.dart';
 import 'library.dart' as lib;
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        scaffoldBackgroundColor: Colors.grey[900],
+        scaffoldBackgroundColor: lib.colorBl,
       ),
       home: DentalFixApp(),
     );
@@ -32,11 +32,11 @@ class DentalFixApp extends StatelessWidget {
             appBar: AppBar(
               title: Text("DentalFix", style: lib.headText),
               centerTitle: true,
-              backgroundColor: Color.fromARGB(255, 255, 177, 59),
+              backgroundColor: lib.colorYe,
             ),
             bottomNavigationBar: TabBar(
-                indicatorColor: Color.fromARGB(255, 255, 177, 59),
-                labelColor: Color.fromARGB(255, 255, 177, 59),
+                indicatorColor: lib.colorYe,
+                labelColor: lib.colorYe,
                 tabs: [
                   Tab(icon: Icon(Icons.home), text: "welcome"),
                   Tab(icon: Icon(Icons.face), text: "dentists"),
@@ -47,7 +47,7 @@ class DentalFixApp extends StatelessWidget {
               children: [
                 Home(),
                 Dentist(),
-                Appointment(),
+                AppointmentPage(),
                 FAQ(),
               ],
             )));

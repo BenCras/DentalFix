@@ -1,20 +1,13 @@
-import 'package:flutter/material.dart';
-import 'library.dart' as lib;
-// import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+class Appointment {
+  String firstname;
+  String name;
+  DateTime date;
+  bool isUrgent = false;
 
-class Appointment extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        Container(
-          margin: EdgeInsets.all(lib.textMarge),
-          child: Text(
-            "You can make appointments here",
-            style: lib.basisText,
-          ),
-        ),
-      ],
-    );
-  }
+  Appointment(this.firstname, this.name, this.date, this.isUrgent);
+
+  // Named constructor
+  Appointment.withDate(this.date)
+      : firstname = '',
+        name = '';
 }
