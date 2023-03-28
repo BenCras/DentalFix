@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:native_eindopdracht/widgets/maps.dart';
 import 'library.dart' as lib;
-import 'widgets/maps.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatefulWidget {
@@ -9,18 +7,37 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   bool maps = false;
+  late final AnimationController _controller = AnimationController(
+    duration: const Duration(seconds: 2),
+    vsync: this,
+  )..repeat(reverse: true);
+  late final Animation<double> _animation = CurvedAnimation(
+    parent: _controller,
+    curve: Curves.elasticOut,
+  );
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return ListView(
       padding: EdgeInsets.only(bottom: 50.0),
       children: <Widget>[
-        Image.asset(
-          "images/dentalFix.png",
-          color: lib.colorYe,
-          scale: 0.75,
+        FittedBox(
+          child: RotationTransition(
+            turns: _animation,
+            child: Image.asset(
+              "images/dentalFix.png",
+              color: lib.colorYe,
+              scale: 0.75,
+            ),
+          ),
         ),
         Container(
           margin: EdgeInsets.all(lib.textMarge),
@@ -61,9 +78,8 @@ class _HomeState extends State<Home> {
             ),
           ],
         ),
-        // GoogleMaps(),
         const SizedBox(
-          height: 50,
+          height: 30,
         ),
         maps
             ? Image.asset(
